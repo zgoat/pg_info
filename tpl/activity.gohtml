@@ -1,0 +1,23 @@
+<h2 id="activity">pg_stat_activity</h2>
+<p>
+	<a href="https://www.postgresql.org/docs/current/monitoring-stats.html#PG-STAT-ACTIVITY-VIEW">Documentation</a>
+</p>
+
+<table>
+{{if gt (len .) 0}}
+<thead><tr>
+	<th>PID</th>
+	<th class="n">Duration</th>
+	<th>Query</th>
+</tr></thead>
+{{end}}
+<tbody>
+	{{range $s := .}}
+	<tr>
+		<td>{{$s.PID}}</td>
+		<td class="n">{{$s.Duration}}</td>
+		<td><pre>{{$s.Query}}</pre></td>
+	</tr>
+	{{end}}
+</tbody>
+</table>

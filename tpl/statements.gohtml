@@ -1,0 +1,71 @@
+<h2 id="statements">pg_stat_statements
+<form method="get" action="#statements">
+	{{/*
+	<input type="hidden" name="order" value="{{.Order}}">
+	<input name="filter" value="{{.Filter}}" placeholder="Filter">
+	*/}}
+</form>
+</h2>
+<table>
+<thead><tr>
+	<th></th>
+	<th class="n">
+		<a href="?filter={{.Filter}}&order=calls#statements">desc</a>/
+		{{- "" -}}<a href="?filter={{.Filter}}&order=calls&asc=1#statements">asc</a>
+		<br>
+		Calls
+	</th>
+	<th class="n">
+		<a href="?filter={{.Filter}}&order=total#statements">desc</a>/
+		{{- "" -}}<a href="?filter={{.Filter}}&order=total&asc=1#statements">asc</a>
+		<br>
+		Total
+	</th>
+	<th class="n">
+		<a href="?filter={{.Filter}}&order=mean_time#statements">desc</a>/
+		{{- "" -}}<a href="?filter={{.Filter}}&order=mean_time&asc=1#statements">asc</a>
+		<br>
+		Mean
+	</th>
+	<th class="n">
+		<a href="?filter={{.Filter}}&order=min_time#statements">desc</a>/
+		{{- "" -}}<a href="?filter={{.Filter}}&order=min_time&asc=1#statements">asc</a>
+		<br>
+		Min
+	</th>
+	<th class="n">
+		<a href="?filter={{.Filter}}&order=max_time#statements">desc</a>/
+		{{- "" -}}<a href="?filter={{.Filter}}&order=max_time&asc=1#statements">asc</a>
+		<br>
+		Max
+	</th>
+	<th class="n">
+		<a href="?filter={{.Filter}}&order=stddev_time#statements">desc</a>/
+		{{- "" -}}<a href="?filter={{.Filter}}&order=stddev_time&asc=1#statements">asc</a>
+		<br>
+		StdDev
+	</th>
+	<th class="n">
+		<a href="?filter={{.Filter}}&order=hit_percent#statements">desc</a>/
+		{{- "" -}}<a href="?filter={{.Filter}}&order=hit_percent&asc=1#statements">asc</a>
+		<br>
+		Cache
+	</th>
+	<th>Query</th>
+</tr></thead>
+<tbody>
+	{{range $s := .Statements}}
+	<tr>
+		<td class="qid-td"><span class="qid">{{$s.QueryID}}</span></td>
+		<td class="n">{{nformat $s.Calls 44}}</td>
+		<td class="n">{{$s.Total | printf "%.1f"}}min</td>
+		<td class="n">{{$s.MeanTime | printf "%.1f"}}ms</td>
+		<td class="n">{{$s.MinTime | printf "%.1f"}}ms</td>
+		<td class="n">{{$s.MaxTime | printf "%.1f"}}ms</td>
+		<td class="n">{{$s.StdDevTime | printf "%.1f"}}</td>
+		<td class="n">{{$s.HitPercent | printf "%.0f"}}%</td>
+		<td><pre>{{$s.Query}}</pre></td>
+	</tr>
+	{{end}}
+</tbody>
+</table>

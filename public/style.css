@@ -1,0 +1,22 @@
+/* Sort */
+table    { max-width: none !important; }
+td       { white-space: nowrap; vertical-align: top; }
+pre      { white-space: pre-wrap; border: 0; background-color: transparent; margin: 0; }
+th       { text-align: left; }
+.n       { text-align: right; }
+input    { float: right; padding: .4em !important; }
+.sort th { color: blue; cursor: pointer; }
+
+/* Make queryID shorter, but still allow copy/pasting */
+.qid-td    { padding: 0; }
+.qid       { border: 1px solid #eee; width: 1em; line-height: 2em; overflow: hidden; display: block; }
+.qid:hover { width: auto; }
+
+#system-stats { display: flex; justify-content: space-between; }
+h2            { cursor: pointer; }
+.table-detail { background-color: #eee; }
+
+.page { max-width: unset; }
+
+.e { border: 1px solid #ddd; margin: .5em 0; position: relative; }
+.e form { position: absolute; top: 0; right: 0; }

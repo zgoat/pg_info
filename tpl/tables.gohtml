@@ -1,0 +1,45 @@
+<h2 id="tables">Tables</h2>
+<table class="sort">
+<thead><tr>
+	<th>Table</th>
+	<th class="n">T size</th>
+	<th class="n">I size</th>
+	<th>Last vacuum</th>
+	<th>Last analyze</td>
+	<th class="n" title="Number of seq scans → of live rows fetched by seq scans">Seq scan</th>
+	<th class="n" title="Number of index scans → number of live rows fetched by index scans">Index scan</th>
+	<th class="n">Live rows</th>
+	<th class="n">Dead rows</th>
+	<th class="n">Mod. rows</th>
+</tr></thead>
+<tbody>
+	{{range $s := .}}
+	<tr>
+		<td><a href="#" class="load-table">{{$s.Table}}</a></td>
+		<td class="n">{{$s.TableSize}}M</td>
+		<td class="n">{{$s.IndexesSize}}M</td>
+		<td>
+			{{if $s.LastVacuum.After $s.LastAutoVacuum}}
+				{{$s.LastVacuum.Format "2006-01-02"}}
+			{{else}}
+				{{$s.LastAutoVacuum.Format "2006-01-02"}}
+			{{end}}
+			({{$s.VacuumCount}})
+		</td>
+		<td>
+			{{if $s.LastAnalyze.After $s.LastAutoAnalyze}}
+				{{$s.LastAnalyze.Format "2006-01-02"}}
+			{{else}}
+				{{$s.LastAutoAnalyze.Format "2006-01-02"}}
+			{{end}}
+			({{$s.AnalyzeCount}})
+		</td>
+		<td class="n">{{nformat64 $s.SeqScan}} → {{nformat64 $s.SeqRead}}</td>
+		<td class="n">{{nformat64 $s.IdxScan}} → {{nformat64 $s.IdxRead}}</td>
+		<td class="n">{{nformat64 $s.LiveTup}}</td>
+		<td class="n">{{nformat64 $s.DeadTup}}</td>
+		<td class="n">{{nformat64 $s.ModSinceAnalyze}}</td>
+	</tr>
+	{{end}}
+</tbody>
+</table>

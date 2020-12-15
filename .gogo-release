@@ -1,0 +1,22 @@
+build_flags="$build_flags ./cmd/pg_info"
+
+# TODO
+# Building ./dist/pg_info-01-illumos-amd64# zgo.at/zli
+# ../../.cache/go-mod/zgo.at/zli@v0.0.0-20200727160635-d9fa18baab0f/color.go:273:40: undefined: isatty.IsTerminal
+# ../../.cache/go-mod/zgo.at/zli@v0.0.0-20200727160635-d9fa18baab0f/zli.go:29:49: undefined: isatty.IsTerminal
+#
+# Building ./dist/pg_info-01-solaris-amd64# zgo.at/zli
+# ../../.cache/go-mod/zgo.at/zli@v0.0.0-20200727160635-d9fa18baab0f/color.go:273:40: undefined: isatty.IsTerminal
+# ../../.cache/go-mod/zgo.at/zli@v0.0.0-20200727160635-d9fa18baab0f/zli.go:29:49: undefined: isatty.IsTerminal
+
+matrix="
+darwin amd64
+dragonfly amd64
+freebsd amd64
+linux amd64
+linux arm
+linux arm64
+netbsd amd64
+openbsd amd64
+windows amd64
+"

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>pg_info</title>
+	<link rel="stylesheet" href="{{.Prefix}}/all.css">
+	<link rel="stylesheet" href="{{.Prefix}}/style.css">
+</head>
+<body>
+	<nav>{{range $w := .Widgets}}
+		<a href="{{$.Prefix}}/widget/{{$w}}">{{$w}}</a>
+	{{end}}</nav>
+
+	<div class="page">
+		{{.WidgetHTML}}
+	</div>
+
+	<script src="{{.Prefix}}/jquery.js"></script>
+	<script src="{{.Prefix}}/script.js"></script>
+</body>
+</html>

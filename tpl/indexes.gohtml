@@ -1,0 +1,21 @@
+<h2 id="indexes">Indexes</h2>
+<table class="sort">
+<thead><tr>
+	<th>Index</th>
+	<th class="n">Size</th>
+	<th class="n"># scans</th>
+	<th class="n"># entries returned</th>
+	<th class="n"># rows fetch by simple scans</th>
+</tr></thead>
+<tbody>
+	{{range $s := .}}
+	<tr>
+		<td>{{$s.Index}} on {{$s.Table}}</td>
+		<td class="n">{{$s.Size}}M</td>
+		<td class="n">{{nformat64 $s.Scan}}</td>
+		<td class="n">{{nformat64 $s.TupRead}}</td>
+		<td class="n">{{nformat64 $s.TupFetch}}</td>
+	</tr>
+	{{end}}
+</tbody>
+</table>

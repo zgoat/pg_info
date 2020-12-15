@@ -1,0 +1,10 @@
+<h2 id="explain">Explain</h2>
+<div id="explain">
+	<form method="post" action="{{.Prefix}}/explain">
+		{{/*
+		<input type="hidden" name="csrf" value="{{.User.CSRFToken}}">
+		*/}}
+		<textarea name="query"></textarea>
+		<button type="submit">Submit</button>
+	</form>
+</div>

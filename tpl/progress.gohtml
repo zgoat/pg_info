@@ -1,0 +1,21 @@
+<h2 id="progress">pg_stat_progress_*</h2>
+<table>
+{{if gt (len .) 0}}
+<thead><tr>
+	<th>Table</th>
+	<th>Command</th>
+	<th>Phase</th>
+	<th>Status</th>
+</tr></thead>
+{{end}}
+<tbody>
+	{{range $s := .}}
+	<tr>
+		<td>{{$s.Table}}</td>
+		<td>{{$s.Command}}</td>
+		<td>{{$s.Phase}}</td>
+		<td>{{$s.Status}}</td>
+	</tr>
+	{{end}}
+</tbody>
+</table>
