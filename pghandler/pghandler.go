@@ -47,19 +47,13 @@ func New(p string, db *sql.DB) *chi.Mux {
 
 	r.Get("/widget/{name}", zhttp.Wrap(widget))
 
-	if prefix != "" {
-		//"public/all.css": []byte(`/* FILE: ./aside.css */
-
+	if prefix != "" { // TODO: quick hack
 		var mod = make(map[string][]byte)
 		for k, v := range public {
 			mod["public"+prefix+k[6:]] = v
 		}
 		for k, v := range mod {
 			public[k] = v
-		}
-
-		for k := range public {
-			fmt.Println("  =>", k)
 		}
 	}
 
